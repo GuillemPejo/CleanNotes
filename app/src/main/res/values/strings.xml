@@ -3,4 +3,6 @@
     <string name="my_notes">My notes</string>
     <string name="search_notes">Search notes</string>
     <string name="note_title">Note Title</string>
+    <string name="note_subtitle">Note subtitle</string>
+    <string name="type_note_here">Type note here...</string>
 </resources>
