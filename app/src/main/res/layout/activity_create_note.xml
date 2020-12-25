@@ -93,11 +93,11 @@
             android:textColorHint="@color/textHint"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/viewSubtitle"
+            app:layout_constraintStart_toStartOf="@id/viewSubtitleIndicator"
             app:layout_constraintTop_toBottomOf="@id/textDateTime"/>
 
             <View
-                android:id="@+id/viewSubtitle"
+                android:id="@+id/viewSubtitleIndicator"
                 android:layout_width="@dimen/_5sdp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_12sdp"
