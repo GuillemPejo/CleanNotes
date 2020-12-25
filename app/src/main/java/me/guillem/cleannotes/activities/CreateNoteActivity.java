@@ -100,8 +100,9 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private void initMiscellaneous(){
         final LinearLayout layoutMiscellaneous = findViewById(R.id.layoutMiscellaneous);
-        final BottomSheetBehavior<LinearLayout>bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
-    layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
+        final BottomSheetBehavior<LinearLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
+
+        layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
