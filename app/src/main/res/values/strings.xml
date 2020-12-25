@@ -5,4 +5,6 @@
     <string name="note_title">Note Title</string>
     <string name="note_subtitle">Note subtitle</string>
     <string name="type_note_here">Type note here...</string>
+    <string name="empty_title_note">Note title can\'t be empty</string>
+    <string name="empty_note">Note can\'t be empty</string>
 </resources>
