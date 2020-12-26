@@ -12,4 +12,9 @@
     <string name="add_image">Add image</string>
     <string name="permision_denied">Permission Denied!</string>
     <string name="add_link_or_website">Add link or website</string>
+    <string name="add_url_or_website">Add URL or website</string>
+    <string name="enter_url">Enter URL</string>
+    <string name="add">ADD</string>
+    <string name="cancel">CANCEL</string>
+    <string name="valid_url">Enter valid URL</string>
 </resources>
