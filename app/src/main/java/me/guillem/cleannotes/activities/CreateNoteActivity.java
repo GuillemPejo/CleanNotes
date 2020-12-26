@@ -50,7 +50,7 @@ import static me.guillem.cleannotes.R.string.empty_title_note;
 import static me.guillem.cleannotes.R.string.permision_denied;
 import static me.guillem.cleannotes.R.string.valid_url;
 
-public class CreateNoteActivity extends AppCompatActivity {
+public class CreateNoteActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
     private TextView textDateTime;
@@ -66,6 +66,9 @@ public class CreateNoteActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
 
     private AlertDialog dialogAddURL;
+    private AlertDialog dialogDeleteNote;
+
+
     private Note alreadyAvailableNote;
 
 
@@ -91,18 +94,15 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutWebURL = findViewById(R.id.layoutWebUrl);
 
 
+
         textDateTime.setText(
                 new SimpleDateFormat("EEEE dd MMMM yyy HH:mm a", Locale.getDefault())
                 .format(new Date())
         );
 
         ImageView imageSave = findViewById(R.id.imageSave);
-        imageSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveNote();
-            }
-        });
+        imageSave.setOnClickListener(this);
+
 
         selectedNoteColor = "#333333";
         selectedImagePath = "";
@@ -111,8 +111,33 @@ public class CreateNoteActivity extends AppCompatActivity {
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
             setViewOrUpdatedNote();
         }
+
+        findViewById(R.id.imageRemoveWebURL).setOnClickListener(this);
+        findViewById(R.id.imageRemoveImage).setOnClickListener(this);
         initMiscellaneous();
         setSubtitleIndicatorColor();
+    }
+
+    public void onClick(View v) {
+
+        switch(v.getId()){
+
+            case R.id.imageSave:
+                saveNote();
+                break;
+
+            case R.id.imageRemoveWebURL:
+                textWebURL.setText(null);
+                layoutWebURL.setVisibility(View.GONE);
+                break;
+
+            case R.id.imageRemoveImage:
+                imageNote.setImageBitmap(null);
+                imageNote.setVisibility(View.GONE);
+                findViewById(R.id.imageRemoveImage).setVisibility(View.GONE);
+                selectedImagePath = "";
+                break;
+        }
     }
 
     private void setViewOrUpdatedNote(){
@@ -123,6 +148,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         if(alreadyAvailableNote.getImagePath() !=null && !alreadyAvailableNote.getImagePath().trim().isEmpty()){
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
+            findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
             selectedImagePath = alreadyAvailableNote.getImagePath();
         }
 
@@ -193,10 +219,12 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
     });
         final ImageView imageColor1 = layoutMiscellaneous.findViewById(R.id.imageColor1);
+        imageColor1.setOnClickListener(this);
         final ImageView imageColor2 = layoutMiscellaneous.findViewById(R.id.imageColor2);
         final ImageView imageColor3 = layoutMiscellaneous.findViewById(R.id.imageColor3);
         final ImageView imageColor4 = layoutMiscellaneous.findViewById(R.id.imageColor4);
         final ImageView imageColor5 = layoutMiscellaneous.findViewById(R.id.imageColor5);
+
 
         layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,6 +340,65 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
+        if (alreadyAvailableNote != null){
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    showDeleteNoteDialog();
+
+                }
+            });
+        }
+
+    }
+
+    private void showDeleteNoteDialog(){
+        if (dialogDeleteNote == null){
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+            View view = LayoutInflater.from(this).inflate(
+                    R.layout.layout_delete_note,
+                    (ViewGroup) findViewById(R.id.layoutDeleteNoteContainer)
+            );
+            builder.setView(view);
+            dialogDeleteNote = builder.create();
+            if (dialogDeleteNote.getWindow() !=null){
+                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    class DeleteNoteTask extends AsyncTask<Void, Void, Void>{
+
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            NotesDatabase.getDabase(getApplicationContext()).noteDao()
+                                    .deleteNote(alreadyAvailableNote);
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            super.onPostExecute(aVoid);
+                            Intent intent = new Intent();
+                            intent.putExtra("isNoteDeleted", true);
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }
+                    }
+                    new DeleteNoteTask().execute();
+                }
+            });
+
+            view.findViewById(R.id.textCancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogDeleteNote.dismiss();
+                }
+            });
+        }
+        dialogDeleteNote.show();
     }
 
     private void setSubtitleIndicatorColor(){
@@ -350,6 +437,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                         imageNote.setImageBitmap(bitmap);
                         imageNote.setVisibility(View.VISIBLE);
+                        findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
 
                         selectedImagePath = getPathfromUri(selectedImageUri);
 
