@@ -9,4 +9,6 @@
     <string name="empty_note">Note can\'t be empty</string>
     <string name="miscellaneous">Miscellaneous</string>
     <string name="pick_color">Pick a color</string>
+    <string name="add_image">Add image</string>
+    <string name="permision_denied">Permission Denied!</string>
 </resources>
