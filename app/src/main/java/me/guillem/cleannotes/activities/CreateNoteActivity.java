@@ -75,7 +75,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         inputNoteSubtitle = findViewById(R.id.inputNotesSubttle);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
-        imageBack = findViewById(R.id.imageNote);
+        imageNote = findViewById(R.id.imageNote);
 
         textDateTime.setText(
                 new SimpleDateFormat("EEEE dd MMMM yyy HH:mm a", Locale.getDefault())
@@ -269,7 +269,6 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -295,11 +294,13 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private String getPathfromUri(Uri contentUri){
         String filePath;
-        Cursor cursor = getContentResolver()
-                .query(contentUri, null, null, null);
+        Cursor cursor = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            cursor = getContentResolver()
+                    .query(contentUri, null, null, null);
+        }
         if (cursor == null){
             filePath = contentUri.getPath();
         }else {

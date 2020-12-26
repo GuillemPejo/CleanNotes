@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_ADD_NOTE && requestCode == RESULT_OK){
+        if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK){
             getNotes();
         }
     }

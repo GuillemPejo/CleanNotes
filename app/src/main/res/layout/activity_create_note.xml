@@ -34,8 +34,8 @@
 
         <ImageView
             android:id="@+id/imageSave"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_12sdp"
             android:background="@drawable/background_done_button"
             android:contentDescription="@string/app_name"
