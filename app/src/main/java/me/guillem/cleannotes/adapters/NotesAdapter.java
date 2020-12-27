@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,9 +28,6 @@ import me.guillem.cleannotes.R;
 import me.guillem.cleannotes.entities.Note;
 import me.guillem.cleannotes.listeners.NotesListener;
 
-import static me.guillem.cleannotes.R.id.forever;
-import static me.guillem.cleannotes.R.id.textDateTime;
-import static me.guillem.cleannotes.R.id.textTitle;
 
 /**
  * * Created by Guillem on 25/12/20.
@@ -102,7 +102,23 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             } else {
                 textSubtitle.setText(note.getSubtitle());
             }
-            textDateTime.setText(note.getDateTime());
+
+            final String NEW_FORMAT = "dd/MM/yyyy";
+            final String  OLD_FORMAT = "EEEE dd MMMM yyy HH:mm";
+
+            String oldDateString = note.getDateTime();
+            String newDateString;
+
+            SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+            Date d = null;
+            try {
+                d = sdf.parse(oldDateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            sdf.applyPattern(NEW_FORMAT);
+            newDateString = sdf.format(d);
+            textDateTime.setText((R.string.at_date) +" "+ newDateString);
 
             GradientDrawable gradientDrawable = (GradientDrawable) layoutNote.getBackground();
             if (note.getColor() != null) {

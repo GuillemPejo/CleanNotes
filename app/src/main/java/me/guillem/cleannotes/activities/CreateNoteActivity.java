@@ -96,7 +96,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
 
 
         textDateTime.setText(
-                new SimpleDateFormat("EEEE dd MMMM yyy HH:mm a", Locale.getDefault())
+                new SimpleDateFormat("EEEE dd MMMM yyy HH:mm", Locale.getDefault())
                 .format(new Date())
         );
 
