@@ -286,7 +286,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#FF4842";
+                selectedNoteColor = "#F44336";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(R.drawable.ic_done);
@@ -304,7 +304,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#3A52FC";
+                selectedNoteColor = "#3F51B5";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -321,7 +321,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#000000";
+                selectedNoteColor = "#4CAF50";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -339,7 +339,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#000000";
+                selectedNoteColor = "#03A9F4";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -357,7 +357,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#000000";
+                selectedNoteColor = "#009688";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -375,7 +375,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         layoutMiscellaneous.findViewById(R.id.viewColor8).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#000000";
+                selectedNoteColor = "#9C27B0";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -413,14 +413,26 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 case "#FDBE3B":
                     layoutMiscellaneous.findViewById(R.id.viewColor2).performClick();
                     break;
-                case "#FF4842":
+                case "#F44336":
                     layoutMiscellaneous.findViewById(R.id.viewColor3).performClick();
                     break;
-                case "#3A52FC":
+                case "#3F51B5":
                     layoutMiscellaneous.findViewById(R.id.viewColor4).performClick();
                     break;
-                case "#000000":
+                case "#4CAF50":
                     layoutMiscellaneous.findViewById(R.id.viewColor5).performClick();
+                    break;
+                case "#03A9F4":
+                    layoutMiscellaneous.findViewById(R.id.viewColor6).performClick();
+                    break;
+                case "#009688":
+                    layoutMiscellaneous.findViewById(R.id.viewColor7).performClick();
+                    break;
+                case "#9C27B0":
+                    layoutMiscellaneous.findViewById(R.id.viewColor8).performClick();
+                    break;
+                case "#000000":
+                    layoutMiscellaneous.findViewById(R.id.viewColor9).performClick();
                     break;
             }
         }

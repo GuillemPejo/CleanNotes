@@ -54,6 +54,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
+                android:fontFamily="@font/baloob"
                 android:hint="@string/note_title"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"

@@ -15,6 +15,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:includeFontPadding="false"
+        android:fontFamily="@font/baloob"
         android:text="@string/my_notes"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
