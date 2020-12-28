@@ -20,9 +20,14 @@
     <color name="colorNotesSubtitles">#FAFAFA</color>
     <color name="colorMiscelaneous">#1F1F1F</color>
     <color name="colorNoteColor2">#FDBE3B</color>
-    <color name="colorNoteColor3">#FF4842</color>
-    <color name="colorNoteColor4">#3A52FC</color>
-    <color name="colorNoteColor5">#000000</color>
+    <color name="colorNoteColor3">#F44336</color>
+    <color name="colorNoteColor4">#3F51B5</color>
+    <color name="colorNoteColor5">#4CAF50</color>
+    <color name="colorNoteColor6">#03A9F4</color>
+    <color name="colorNoteColor7">#009688</color>
+    <color name="colorNoteColor8">#9C27B0</color>
+    <color name="colorNoteColor9">#000000</color>
+
     <color name="colorDelete">#FF4842</color>
     <color name="colorSearchBackground">#333333</color>
 

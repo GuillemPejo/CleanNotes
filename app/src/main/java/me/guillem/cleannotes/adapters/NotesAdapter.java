@@ -118,7 +118,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             }
             sdf.applyPattern(NEW_FORMAT);
             newDateString = sdf.format(d);
-            textDateTime.setText("at "+ newDateString);
+            textDateTime.setText("- "+ newDateString);
 
             GradientDrawable gradientDrawable = (GradientDrawable) layoutNote.getBackground();
             if (note.getColor() != null) {

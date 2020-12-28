@@ -77,6 +77,7 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+
         ImageView imageBack = findViewById(R.id.imageBack);
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,12 +115,15 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
 
         findViewById(R.id.imageRemoveWebURL).setOnClickListener(this);
         findViewById(R.id.imageRemoveImage).setOnClickListener(this);
+        findViewById(R.id.layoutMiscellaneous).setOnClickListener(this);
+
+
+
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
 
     public void onClick(View v) {
-
         switch(v.getId()){
 
             case R.id.imageSave:
@@ -203,6 +207,8 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
         new SaveNoteTask().execute();
     }
 
+
+
     private void initMiscellaneous(){
         final LinearLayout layoutMiscellaneous = findViewById(R.id.layoutMiscellaneous);
         final BottomSheetBehavior<LinearLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
@@ -218,12 +224,26 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
             }
         }
     });
+
         final ImageView imageColor1 = layoutMiscellaneous.findViewById(R.id.imageColor1);
-        imageColor1.setOnClickListener(this);
+        //imageColor1.setOnClickListener(this);
         final ImageView imageColor2 = layoutMiscellaneous.findViewById(R.id.imageColor2);
+        //imageColor2.setOnClickListener(this);
         final ImageView imageColor3 = layoutMiscellaneous.findViewById(R.id.imageColor3);
+        //imageColor3.setOnClickListener(this);
         final ImageView imageColor4 = layoutMiscellaneous.findViewById(R.id.imageColor4);
+        //imageColor4.setOnClickListener(this);
         final ImageView imageColor5 = layoutMiscellaneous.findViewById(R.id.imageColor5);
+        //imageColor5.setOnClickListener(this);
+        final ImageView imageColor6 = layoutMiscellaneous.findViewById(R.id.imageColor6);
+        //imageColor6.setOnClickListener(this);
+        final ImageView imageColor7 = layoutMiscellaneous.findViewById(R.id.imageColor7);
+        //imageColor7.setOnClickListener(this);
+        final ImageView imageColor8 = layoutMiscellaneous.findViewById(R.id.imageColor8);
+        //imageColor8.setOnClickListener(this);
+        final ImageView imageColor9 = layoutMiscellaneous.findViewById(R.id.imageColor9);
+        //imageColor9.setOnClickListener(this);
+
 
 
         layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(new View.OnClickListener() {
@@ -235,6 +255,10 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
                 setSubtitleIndicatorColor();
 
             }
@@ -249,6 +273,10 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
                 setSubtitleIndicatorColor();
 
             }
@@ -264,6 +292,10 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 imageColor3.setImageResource(R.drawable.ic_done);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
                 setSubtitleIndicatorColor();
 
             }
@@ -277,7 +309,10 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(R.drawable.ic_done);
-                imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
                 setSubtitleIndicatorColor();
 
             }
@@ -292,6 +327,82 @@ public class CreateNoteActivity extends AppCompatActivity implements View.OnClic
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(R.drawable.ic_done);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
+                setSubtitleIndicatorColor();
+
+            }
+        });
+
+        layoutMiscellaneous.findViewById(R.id.viewColor6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedNoteColor = "#000000";
+                imageColor1.setImageResource(0);
+                imageColor2.setImageResource(0);
+                imageColor3.setImageResource(0);
+                imageColor4.setImageResource(0);
+                imageColor5.setImageResource(0);
+                imageColor6.setImageResource(R.drawable.ic_done);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
+                setSubtitleIndicatorColor();
+
+            }
+        });
+
+        layoutMiscellaneous.findViewById(R.id.viewColor7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedNoteColor = "#000000";
+                imageColor1.setImageResource(0);
+                imageColor2.setImageResource(0);
+                imageColor3.setImageResource(0);
+                imageColor4.setImageResource(0);
+                imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(R.drawable.ic_done);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(0);
+                setSubtitleIndicatorColor();
+
+            }
+        });
+
+        layoutMiscellaneous.findViewById(R.id.viewColor8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedNoteColor = "#000000";
+                imageColor1.setImageResource(0);
+                imageColor2.setImageResource(0);
+                imageColor3.setImageResource(0);
+                imageColor4.setImageResource(0);
+                imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(R.drawable.ic_done);
+                imageColor9.setImageResource(0);
+                setSubtitleIndicatorColor();
+
+            }
+        });
+
+        layoutMiscellaneous.findViewById(R.id.viewColor9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedNoteColor = "#000000";
+                imageColor1.setImageResource(0);
+                imageColor2.setImageResource(0);
+                imageColor3.setImageResource(0);
+                imageColor4.setImageResource(0);
+                imageColor5.setImageResource(0);
+                imageColor6.setImageResource(0);
+                imageColor7.setImageResource(0);
+                imageColor8.setImageResource(0);
+                imageColor9.setImageResource(R.drawable.ic_done);
                 setSubtitleIndicatorColor();
 
             }

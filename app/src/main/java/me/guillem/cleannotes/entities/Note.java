@@ -1,5 +1,7 @@
 package me.guillem.cleannotes.entities;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
