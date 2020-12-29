@@ -19,8 +19,7 @@
         android:text="@string/my_notes"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:id="@+id/layoutSearch"
@@ -32,7 +31,7 @@
         android:orientation="horizontal"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_40sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/textMyNotes">
@@ -62,22 +61,32 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/changeLayout"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_list"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutSearch"
+        app:layout_constraintStart_toEndOf="@+id/layoutSearch"
+        app:layout_constraintTop_toTopOf="@+id/layoutSearch"
+        app:tint="@color/search" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/_2sdp"
-        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:clipToPadding="false"
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/_12sdp"
-        android:paddingBottom="@dimen/_12sdp"
-        app:layout_constraintBottom_toTopOf="@id/layoutQuickActions"
+        android:paddingBottom="@dimen/_60sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutSearch"
-        />
+        tools:layout_editor_absoluteX="3dp" />
 
-    <LinearLayout
+<!--    <LinearLayout
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -113,20 +122,42 @@
             android:src="@drawable/ic_web_link"
             app:tint="@color/colorIcons" />
 
-    </LinearLayout>
+    </LinearLayout>-->
 
-    <ImageView
-        android:id="@+id/imageAddNoteMain"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_30sdp"
-        android:background="@drawable/background_add_button"
-        android:contentDescription="@string/app_name"
-        android:padding="@dimen/_5sdp"
-        android:src="@drawable/ic_add_symb"
-        app:layout_constraintBottom_toTopOf="@id/layoutQuickActions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/layoutQuickActions"
-        app:tint="@color/grey_p1" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/heko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorQuickaction"
+            app:fabAlignmentMode="end"
+            app:fabAnimationMode="scale"
+            app:fabCradleMargin="@dimen/_5sdp"
+            app:fabCradleRoundedCornerRadius="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/imageAddNoteMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_add_symb"
+            app:layout_anchor="@id/heko"
+            app:layout_constraintBottom_toTopOf="@id/heko"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/heko"
+            app:maxImageSize="@dimen/_35sdp"
+            app:tint="@color/grey_p1" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

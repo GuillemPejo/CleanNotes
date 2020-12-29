@@ -34,6 +34,8 @@ import me.guillem.cleannotes.listeners.NotesListener;
  */
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder>{
 
+    public static final int SPAN_COUNT_ONE = 1;
+    public static final int SPAN_COUNT_TWO = 2;
     private List<Note> notes;
     private NotesListener notesListener;
     private Timer timer;

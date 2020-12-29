@@ -2,11 +2,13 @@ package me.guillem.cleannotes.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,9 +16,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 import me.guillem.cleannotes.R;
@@ -24,6 +28,10 @@ import me.guillem.cleannotes.adapters.NotesAdapter;
 import me.guillem.cleannotes.database.NotesDatabase;
 import me.guillem.cleannotes.entities.Note;
 import me.guillem.cleannotes.listeners.NotesListener;
+
+import static me.guillem.cleannotes.adapters.NotesAdapter.SPAN_COUNT_ONE;
+import static me.guillem.cleannotes.adapters.NotesAdapter.SPAN_COUNT_TWO;
+
 
 public class MainActivity extends AppCompatActivity implements NotesListener {
 
@@ -37,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private NotesAdapter notesAdapter;
 
     private int noteClickedPosition = -1;
+    private StaggeredGridLayoutManager notesLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +61,30 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         });
 
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
-        notesRecyclerView.setLayoutManager(
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        );
+        notesLayoutManager = new StaggeredGridLayoutManager(SPAN_COUNT_TWO,StaggeredGridLayoutManager.VERTICAL);
+        //notesRecyclerView.setLayoutManager(
+         //       new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        //);
+        notesRecyclerView.setLayoutManager(notesLayoutManager);
 
         noteList = new ArrayList<>();
         notesAdapter = new NotesAdapter(noteList, this);
         notesRecyclerView.setAdapter(notesAdapter);
 
         getNotes(REQUEST_CODE_SHOW_NOTE,false);
+
+        ImageView changeLayout = findViewById(R.id.changeLayout);
+        changeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switchLayout();
+                switchIcon();
+
+            }
+        });
+
+
 
         EditText inputSearch = findViewById(R.id.inputSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
@@ -82,6 +106,24 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             }
         });
+    }
+
+    private void switchIcon() {
+        if (notesLayoutManager.getSpanCount () == SPAN_COUNT_TWO) {
+
+
+        }else {
+            notesLayoutManager.setSpanCount(SPAN_COUNT_ONE);
+        }
+    }
+
+    private void switchLayout() {
+        if (notesLayoutManager.getSpanCount () == SPAN_COUNT_ONE) {
+            notesLayoutManager.setSpanCount(SPAN_COUNT_TWO);
+        }else {
+            notesLayoutManager.setSpanCount(SPAN_COUNT_ONE);
+        }
+        notesAdapter.notifyItemRangeChanged(0, notesAdapter.getItemCount());
     }
 
     @Override
