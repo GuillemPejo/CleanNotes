@@ -62,7 +62,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/changeLayout"
+        android:id="@+id/changeLayoutList"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:contentDescription="@string/app_name"
@@ -71,6 +71,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/layoutSearch"
         app:layout_constraintStart_toEndOf="@+id/layoutSearch"
         app:layout_constraintTop_toTopOf="@+id/layoutSearch"
+        app:tint="@color/search" />
+    <ImageView
+        android:id="@+id/changeLayoutGrid"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_grid"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutSearch"
+        app:layout_constraintStart_toEndOf="@+id/layoutSearch"
+        app:layout_constraintTop_toTopOf="@+id/layoutSearch"
+        android:visibility="gone"
         app:tint="@color/search" />
 
     <androidx.recyclerview.widget.RecyclerView

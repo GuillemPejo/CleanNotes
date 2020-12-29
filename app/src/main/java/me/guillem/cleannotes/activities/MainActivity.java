@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.Image;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private int noteClickedPosition = -1;
     private StaggeredGridLayoutManager notesLayoutManager;
 
+    private ImageView changeLayoutList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +77,14 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
         getNotes(REQUEST_CODE_SHOW_NOTE,false);
 
-        ImageView changeLayout = findViewById(R.id.changeLayout);
-        changeLayout.setOnClickListener(new View.OnClickListener() {
+        ImageView changeLayoutList = findViewById(R.id.changeLayoutList);
+
+        changeLayoutList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 switchLayout();
                 switchIcon();
-
             }
         });
 
@@ -110,10 +114,10 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
     private void switchIcon() {
         if (notesLayoutManager.getSpanCount () == SPAN_COUNT_TWO) {
-
+            changeLayoutList.setImageResource(R.drawable.ic_grid);
 
         }else {
-            notesLayoutManager.setSpanCount(SPAN_COUNT_ONE);
+            changeLayoutList.setImageResource(R.drawable.ic_list);
         }
     }
 
