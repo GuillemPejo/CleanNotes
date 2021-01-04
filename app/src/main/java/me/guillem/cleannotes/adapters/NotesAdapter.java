@@ -2,6 +2,7 @@ package me.guillem.cleannotes.adapters;
 
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -82,11 +84,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         return position;
     }
 
-    static class NoteViewHolder extends RecyclerView.ViewHolder {
+    public static class NoteViewHolder extends RecyclerView.ViewHolder {
 
         TextView textTitle, textSubtitle, textDateTime;
         LinearLayout layoutNote;
         RoundedImageView imageNote;
+        public LinearLayout viewF;
+        public LinearLayout viewB;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +99,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             textDateTime = itemView.findViewById(R.id.textDateTime);
             layoutNote = itemView.findViewById(R.id.layoutNote);
             imageNote = itemView.findViewById(R.id.imageNote);
+            viewB = itemView.findViewById(R.id.layoutNote);
+            viewF = itemView.findViewById(R.id.layoutNote);
         }
 
         void setNote(Note note){
@@ -168,5 +174,16 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     public void cancellTime(){
         if (timer != null) {timer.cancel();}
+    }
+
+
+    public void removeNote(int position){
+        notes.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreNote(Note note, int position){
+        notes.add(position, note);
+        notifyItemInserted(position);
     }
 }

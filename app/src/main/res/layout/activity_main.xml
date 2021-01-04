@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_p1"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:id="@+id/principalLayout">
 
     <TextView
         android:id="@+id/textMyNotes"
@@ -66,24 +68,13 @@
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_list"
-        android:layout_margin="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/layoutSearch"
-        app:layout_constraintStart_toEndOf="@+id/layoutSearch"
-        app:layout_constraintTop_toTopOf="@+id/layoutSearch"
-        app:tint="@color/search" />
-    <ImageView
-        android:id="@+id/changeLayoutGrid"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_grid"
         android:layout_margin="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="@+id/layoutSearch"
         app:layout_constraintStart_toEndOf="@+id/layoutSearch"
         app:layout_constraintTop_toTopOf="@+id/layoutSearch"
-        android:visibility="gone"
         app:tint="@color/search" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
@@ -145,7 +136,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/heko"
+            android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -163,10 +154,10 @@
             android:layout_marginEnd="@dimen/_30sdp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_add_symb"
-            app:layout_anchor="@id/heko"
-            app:layout_constraintBottom_toTopOf="@id/heko"
+            app:layout_anchor="@id/bottomBar"
+            app:layout_constraintBottom_toTopOf="@id/bottomBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/heko"
+            app:layout_constraintTop_toTopOf="@id/bottomBar"
             app:maxImageSize="@dimen/_35sdp"
             app:tint="@color/grey_p1" />
 
